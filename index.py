@@ -30,7 +30,6 @@ header = """
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
 """
 
 footer = """
@@ -53,6 +52,7 @@ for p in Pokemon:
     Id, Name, Type1, Type2, Hp, Attack, Defense, speed,  Weight, Height, Ability, image, Dex_entry = p
 
     content = f"""
+    <body class = "type_{Type1}">
     <main class ="detail-main">    
     <header class="header">
         <div class="header-wrapper">
@@ -126,9 +126,9 @@ for p in Pokemon:
         <p><strong>Defense:</strong> {Defense}</p>
         <a href="index.html">← Back to Pokédex</a>
         </header>
+        </div>
         -->
     </main>
-    </div>
     """
 
     with open(f"pokedex_pages/{Name.lower()}.html", "w", encoding="utf-8") as f:
@@ -136,17 +136,18 @@ for p in Pokemon:
 
 # Generate index.html
 index_content = header.format(title="Pokédex") + """
+<body>
     <main class="main">
       <header class="header home">
         <div class="container">
           <div class="logo-wrapper">
-            <img src="./assets/pokeball.svg" alt="pokeball" />
+            <img src="/assets/pokeball.svg" alt="pokeball" />
             <h1>Pokedex</h1>
           </div>
           <div class="search-wrapper">
             <div class="search-wrap">
               <img
-                src="./assets/search.svg"
+                src="/assets/search.svg"
                 alt="search icon"
                 class="search-icon"
               />
@@ -166,7 +167,7 @@ index_content = header.format(title="Pokédex") + """
             <div class="sort-wrapper">
               <div class="sort-wrap">
                 <img
-                  src="./assets/sorting.svg"
+                  src="/assets/sorting.svg"
                   alt="sorting"
                   class="sort-icon"
                   id="sort-icon"
@@ -202,10 +203,19 @@ index_content = header.format(title="Pokédex") + """
 
 for p in Pokemon:
     Name = p[1]
+    Id = p[0]
     index_content += f"""
-    <div class="list-item">
-        <h2><a href='{Name.lower()}.html'>{Name}</a></h2>
-    </div>
+          <div class="list-item">
+            <div class="number-wrap">
+              <p class="caption-fonts">{Id}</p>
+            </div>
+            <div class="img-wrap">
+              <img>
+            </div>
+            <div class="name-wrap">
+              <p class="body3-fonts"><a href='{Name.lower()}.html'>{Name}</a></p>
+            </div> 
+          </div>
     """
 
 index_content += index_footer
