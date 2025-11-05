@@ -215,6 +215,7 @@ for p in Pokemon:
             <div class="name-wrap">
               <p class="body3-fonts"><a href='{Name.lower()}.html'>{Name}</a></p>
             </div> 
+            
           </div>
     """
 

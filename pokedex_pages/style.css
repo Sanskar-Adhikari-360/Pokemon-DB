@@ -1,6 +1,6 @@
 /* (Paste the CSS code here) */
 .type_Grass{
-background-color: #74cb48;
+background-color: #78C850;
 }
 
 .type_Water{
@@ -56,7 +56,7 @@ background-color: #705898;
 }
 
 .type_Steel{
-background-color: #1b1b1fff;
+background-color: #B8B8D0;
 }
 
 
@@ -317,13 +317,15 @@ body {
   padding: 20px 20px 24px 20px;
   position: relative;
   z-index: 2;
+  text-align: center;
 }
 
 .detail-main .header-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   column-gap: 15px;
+  text-align: center;
 }
 
 .detail-main .header-wrap {
@@ -341,6 +343,9 @@ body {
 .detail-main .header-wrapper h1 {
   fill: var(--grayscale-white);
   color: var(--grayscale-white);
+  align-items: center;
+  text-align: center;
+  margin: auto;
 }
 
 .detail-main .pokemon-id-wrap p {
@@ -361,15 +366,21 @@ body {
 }
 
 .detail-card-detail-wrapper {
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: var(--grayscale-white);
   box-shadow: var(--drop-shadow-inner);
   padding: 56px 20px 20px 20px;
-  margin-top: -50px;
+  margin-top: -40px;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  align-content: center;
+  align-items: center;
 }
 
 .power-wrapper {
@@ -481,6 +492,10 @@ body {
   font-weight: var(--font-weight-bold);
 }
 
+.stats-wrapper{
+  width: 95%;
+}
+
 .stats-wrap .progress-bar {
   flex: 1;
   border-radius: 4px;
@@ -536,11 +551,11 @@ div#not-found-message {
 }
 
 .featured-img a.arrow.left-arrow {
-  left: -2rem;
+  left: 620px;
 }
 
 .featured-img a.arrow.right-arrow {
-  right: -2rem;
+  right: 620px;
 }
 
 .detail-main.main {
