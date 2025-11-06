@@ -11,15 +11,6 @@ conn.close()
 # Create folder if it doesn’t exist
 os.makedirs("pokedex_pages", exist_ok=True)
 
-# # Write CSS and JS files if they don’t exist
-# if not os.path.exists("pokedex_pages/style.css"):
-#     with open("pokedex_pages/style.css", "w", encoding="utf-8") as f:
-#         f.write("""/* (Paste the CSS code here) */""")
-
-# if not os.path.exists("pokedex_pages/script.js"):
-#     with open("pokedex_pages/script.js", "w", encoding="utf-8") as f:
-#         f.write("""/* (Paste the JS code here) */""")
-
 # HTML header and footer templates
 header = """
 <!DOCTYPE html>
@@ -58,45 +49,45 @@ for p in Pokemon:
         <div class="header-wrapper">
           <div class="header-wrap">
             <a href="index.html" class="back-btn-wrap">
-              <img src="/assets/back-to-home.svg" alt="back to home" class="back-btn" id="back-btn">
+              <img src="/assets/Ui/back-to-home.svg" alt="back to home" class="back-btn" id="back-btn">
             </a>
             <div class="name-wrap">
               <h1 class="name">{Name}</h1>
             </div>
           </div>
           <div class="pokemon-id-wrap">
-            <p class="body2-fonts">#001</p>
+            <p class="body2-fonts">#{Id}</p>
           </div>
         </div>
       </header>
       
       <div class="featured-img">
         <a href="{Id - 1}.html" class="arrow left-arrow" id="leftArrow">
-          <img src="/assets/chevron_left.svg" alt="back">
+          <img src="/assets/Ui/chevron_left.svg" alt="back">
         </a>
         <div class="detail-img-wrapper">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg" alt="venusaur">
+          <img src="{image}" alt="venusaur">
         </div>
         <a href="{Id + 1}.html" class="arrow right-arrow" id="rightArrow">
-          <img src="/assets/chevron_right.svg" alt="forward">
+          <img src="/assets/Ui/chevron_right.svg" alt="forward">
         </a>
       </div>
       
       
       <div class="detail-card-detail-wrapper">
-        <div class="power-wrapper"><p class="body3-fonts type grass">grass</p><p class="body3-fonts type poison">poison</p></div>
+        <div class="power-wrapper"><p class="body3-fonts" style = "background-color: var(--{Type1});">{Type1}</p><p class="body3-fonts" style = "background-color: var(--{Type1});">{Type2}</p></div>
         <p class="body2-fonts about-text">About</p>
         <div class="pokemon-detail-wrapper">
           <div class="pokemon-detail-wrap">
             <div class="pokemon-detail">
-              <img src="/assets/weight.svg" alt="weight">
+              <img src="/assets/Ui/weight.svg" alt="weight">
               <p class="body3-fonts weight">{Weight}</p>
             </div>
             <p class="caption-fonts">Weight</p>
           </div>
           <div class="pokemon-detail-wrap">
             <div class="pokemon-detail">
-              <img src="/assets/height.svg" alt="height" class="straighten">
+              <img src="/assets/Ui/height.svg" alt="height" class="straighten">
               <p class="body3-fonts height">{Height}</p>
             </div>
             <p class="caption-fonts">Height</p>
@@ -140,7 +131,7 @@ for p in Pokemon:
             style="color: var(--{Type1});"></progress>
         </div>
 
-    <img src="/assets/pokedex.svg" alt="pokedex" class="detail-bg">
+    <img src="/assets/Ui/pokedex.svg" alt="pokedex" class="detail-bg">
     </main>
     """
 
@@ -154,13 +145,13 @@ index_content = header.format(title="Pokédex") + """
       <header class="header home">
         <div class="container">
           <div class="logo-wrapper">
-            <img src="/assets/pokeball.svg" alt="pokeball" />
+            <img src="/assets/Ui/pokeball.svg" alt="pokeball" />
             <h1>Pokedex</h1>
           </div>
           <div class="search-wrapper">
             <div class="search-wrap">
               <img
-                src="/assets/search.svg"
+                src="/assets/Ui/search.svg"
                 alt="search icon"
                 class="search-icon"
               />
@@ -171,7 +162,7 @@ index_content = header.format(title="Pokédex") + """
                 id="search-input"
               />
               <img
-                src="./assets/cross.svg"
+                src="./assets/Ui/cross.svg"
                 alt="cross icon"
                 class="search-close-icon"
                 id="search-close-icon"
@@ -180,7 +171,7 @@ index_content = header.format(title="Pokédex") + """
             <div class="sort-wrapper">
               <div class="sort-wrap">
                 <img
-                  src="/assets/sorting.svg"
+                  src="/assets/Ui/sorting.svg"
                   alt="sorting"
                   class="sort-icon"
                   id="sort-icon"
@@ -215,8 +206,8 @@ index_content = header.format(title="Pokédex") + """
 """
 
 for p in Pokemon:
-    Name = p[1]
-    Id = p[0]
+    Id, Name, Type1, Type2, Hp, Attack, Defense, speed, Sp_attack, Sp_defense ,Weight, Height, Ability, image, Dex_entry = p
+
     index_content += f"""
         <a href='{Id}.html'>
           <div class="list-item">
@@ -224,7 +215,7 @@ for p in Pokemon:
               <p class="caption-fonts">{Id}</p>
             </div>
             <div class="img-wrap">
-              <img>
+              <img src = "{image}">
             </div>
             <div class="name-wrap">
               <p class="body3-fonts">{Name}</p>

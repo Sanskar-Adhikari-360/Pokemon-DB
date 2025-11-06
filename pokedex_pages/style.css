@@ -1,66 +1,83 @@
 /* (Paste the CSS code here) */
 .type_Grass{
-background-color: #78C850;
+background-color: var(---Grass);
 }
 
 .type_Water{
-background-color: #6890F0;
+background-color: var(--Water);
 }
 
 .type_Fire{
-background-color: #F08030;
+background-color: var(--Fire);
 }
 
 .type_Normal{
-background-color: #A8A878;
+background-color: var(--Normal);
 }
 
 .type_Flying{
-background-color:#A890F0;
+background-color: var(--Flying);
 }
 
 .type_Ice{
-background-color: #98D8D8;
+background-color: var(--Ice);
 }
 
 .type_Dragon{
-background-color: #7038F8;
+background-color: var(--Dragon);
 }
 
 .type_Psychic{
-background-color: #F85888;
+background-color: var(--Psychic);
 }
 
 .type_Poison{
-background-color: #A040A0;
+background-color: var(--Poison);
 }
 
 .type_Rock{ 
-background-color: #B8A038;
+background-color: var(--Rock);
 }
 
 .type_Ground{
-background-color: #E0C068;
+background-color: var(--Ground);
 }
 
 .type_Bug{
-background-color: #A8B820;
+background-color: var(--Bug);
 }
 
 .type_Electric{
-background-color: #F8D030;
+background-color: var(--Electric);
 }
 
 .type_Ghost{
-background-color: #705898;
+background-color: var(--Ghost);
 }
 
 .type_Steel{
-background-color: #B8B8D0;
+background-color: var(--Steel);
 }
 
 
 :root {
+    ---Grass: #78C850;
+    --Water: #6890F0;
+    --Fire: #F08030;
+    --Normal: #A8A878;
+    --Flying: #A890F0;
+    --Ice: #98D8D8;
+    --Dragon: #7038F8;
+    --Psychic: #F85888;
+    --Poison: #A040A0;
+    --Rock: #B8A038;
+    --Ground: #E0C068;
+    --Bug: #A8B820;
+    --Electric: #F8D030;
+    --Ghost: #705898;
+    --Steel: #B8B8D0;
+
+
   --identity-primary: #dc0a2d;
 
   --grayscale-dark: #212121;
@@ -397,7 +414,6 @@ body {
   font-weight: var(--font-weight-bold);
   color: var(--grayscale-white);
   text-transform: capitalize;
-  background-color: #74cb48;
 }
 
 .pokemon-detail.move p {
@@ -551,11 +567,11 @@ div#not-found-message {
 }
 
 .featured-img a.arrow.left-arrow {
-  left: 620px;
+  left: 555px;
 }
 
 .featured-img a.arrow.right-arrow {
-  right: 620px;
+  right: 555px;
 }
 
 .detail-main.main {
