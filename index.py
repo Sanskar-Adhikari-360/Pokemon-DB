@@ -49,7 +49,7 @@ index_footer = """
 
 # Generate a page for each Pokémon
 for p in Pokemon:
-    Id, Name, Type1, Type2, Hp, Attack, Defense, speed,  Weight, Height, Ability, image, Dex_entry = p
+    Id, Name, Type1, Type2, Hp, Attack, Defense, speed, Sp_attack, Sp_defense ,Weight, Height, Ability, image, Dex_entry = p
 
     content = f"""
     <body class = "type_{Type1}">
@@ -71,13 +71,13 @@ for p in Pokemon:
       </header>
       
       <div class="featured-img">
-        <a href="#" class="arrow left-arrow" id="leftArrow">
+        <a href="{Id - 1}.html" class="arrow left-arrow" id="leftArrow">
           <img src="/assets/chevron_left.svg" alt="back">
         </a>
         <div class="detail-img-wrapper">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg" alt="venusaur">
         </div>
-        <a href="#" class="arrow right-arrow" id="rightArrow">
+        <a href="{Id + 1}.html" class="arrow right-arrow" id="rightArrow">
           <img src="/assets/chevron_right.svg" alt="forward">
         </a>
       </div>
@@ -108,30 +108,43 @@ for p in Pokemon:
         </div>
         <p class="body3-fonts pokemon-description">{Dex_entry}</p>
         <p class="body2-fonts about-text">Base Stats</p>
-        <div class="stats-wrapper"><div class="stats-wrap">
-        <p class="body3-fonts stats" style="color: rgb(120, 200, 80);">HP</p>
-        <p class="body3-fonts">{Hp}</p>
-        <progress class="progress-bar" value="{Hp}" max="100" style="color: rgb(120, 200, 80);"></progress></div><div class="stats-wrap"><p class="body3-fonts stats" style="color: rgb(120, 200, 80);">ATK</p><p class="body3-fonts">{Attack}</p><progress class="progress-bar" value="{Attack}" max="100" style="color: rgb(120, 200, 80);"></progress></div><div class="stats-wrap"><p class="body3-fonts stats" style="color: rgb(120, 200, 80);">DEF</p><p class="body3-fonts">{Defense}</p><progress class="progress-bar" value="{Defense}" max="100" style="color: rgb(120, 200, 80);"></progress></div><div class="stats-wrap"><p class="body3-fonts stats" style="color: rgb(120, 200, 80);">SPD</p><p class="body3-fonts">{speed}</p><progress class="progress-bar" value="{speed}" max="100" style="color: rgb(120, 200, 80);"></progress></div></div>
-      </div>    
-    <img src="/assets/pokedex.svg" alt="pokedex" class="detail-bg">
-    
-    <!--
-    <div class="card">
-        <img src = {image}/>
-        <h1>{Name}</h1>
-        <p><strong>Type 1:</strong> {Type1}</p>
-        <p><strong>Type 2:</strong> {Type2}</p>
-        <p><strong>Hp:</strong> {Hp}</p>
-        <p><strong>Attack:</strong> {Attack}</p>
-        <p><strong>Defense:</strong> {Defense}</p>
-        <a href="index.html">← Back to Pokédex</a>
-        </header>
+         <div class="stats-wrapper">
+        <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">HP</p>
+          <p class="body3-fonts">{Hp}</p>
+          <progress class="progress-bar" value="{Hp}" max="100" style="color: var(--{Type1});"></progress>
         </div>
-        -->
+        <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">ATK</p>
+          <p class="body3-fonts">{Attack}</p><progress class="progress-bar" value="{Attack}" max="100"
+            style="color: var(--{Type1});"></progress>
+        </div>
+        <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">DEF</p>
+          <p class="body3-fonts">{Defense}</p><progress class="progress-bar" value="{Defense}" max="100"
+            style="color: var(--{Type1});"></progress>
+        </div>
+                        <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">SATK</p>
+          <p class="body3-fonts">{Sp_attack}</p><progress class="progress-bar" value="{Sp_attack}" max="100"
+            style="color: var(--{Type1});"></progress>
+        </div>
+                <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">SDEF</p>
+          <p class="body3-fonts">{Sp_defense}</p><progress class="progress-bar" value="{Sp_defense}" max="100"
+            style="color: var(--{Type1});"></progress>
+        </div>
+               <div class="stats-wrap">
+          <p class="body3-fonts stats" style="color: var(--{Type1});">SPD</p>
+          <p class="body3-fonts">{speed}</p><progress class="progress-bar" value="{speed}" max="100"
+            style="color: var(--{Type1});"></progress>
+        </div>
+
+    <img src="/assets/pokedex.svg" alt="pokedex" class="detail-bg">
     </main>
     """
 
-    with open(f"pokedex_pages/{Name.lower()}.html", "w", encoding="utf-8") as f:
+    with open(f"pokedex_pages/{Id}.html", "w", encoding="utf-8") as f:
         f.write(header.format(title=Name) + content + footer)
 
 # Generate index.html
@@ -205,6 +218,7 @@ for p in Pokemon:
     Name = p[1]
     Id = p[0]
     index_content += f"""
+        <a href='{Id}.html'>
           <div class="list-item">
             <div class="number-wrap">
               <p class="caption-fonts">{Id}</p>
@@ -213,10 +227,11 @@ for p in Pokemon:
               <img>
             </div>
             <div class="name-wrap">
-              <p class="body3-fonts"><a href='{Name.lower()}.html'>{Name}</a></p>
+              <p class="body3-fonts">{Name}</p>
             </div> 
             
           </div>
+          </a>
     """
 
 index_content += index_footer
