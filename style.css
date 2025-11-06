@@ -1,6 +1,5 @@
-/* (Paste the CSS code here) */
 .type_Grass{
-background-color: var(---Grass);
+background-color: var(--Grass);
 }
 
 .type_Water{
@@ -59,9 +58,17 @@ background-color: var(--Ghost);
 background-color: var(--Steel);
 }
 
+.type_Fairy{
+background-color: var(--Fairy);
+}
+
+.type_Fighting{
+background-color: var(--Fighting);
+}
+
 
 :root {
-    ---Grass: #78C850;
+    --Grass: #78C850;
     --Water: #6890F0;
     --Fire: #F08030;
     --Normal: #A8A878;
@@ -76,6 +83,9 @@ background-color: var(--Steel);
     --Electric: #F8D030;
     --Ghost: #705898;
     --Steel: #B8B8D0;
+    --Fighting: #C03028;
+    --Fairy: #EE99AC;
+
 
 
   --identity-primary: #dc0a2d;
@@ -328,7 +338,7 @@ body {
 
 
 
-/* detail page */
+/* detail page ko lagi*/
 
 .detail-main .header {
   padding: 20px 20px 24px 20px;

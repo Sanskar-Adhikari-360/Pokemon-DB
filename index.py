@@ -1,32 +1,25 @@
 import sqlite3
 import os
 
-# Connect to database
 conn = sqlite3.connect("PokemonDB.db")
 cursor = conn.cursor()
 cursor.execute("SELECT * FROM Pokemon")
 Pokemon = cursor.fetchall()
 conn.close()
 
-# Create folder if it doesn’t exist
 os.makedirs("pokedex_pages", exist_ok=True)
 
-# HTML header and footer templates
 header = """
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>{title}</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="script.js"></script>
 </head>
 """
 
-footer = """
-</body>
-</html>
-"""
 index_footer = """
         
         </div>
@@ -38,7 +31,7 @@ index_footer = """
 </html>
 """
 
-# Generate a page for each Pokémon
+# make a page for each pokemon by iterating the rows of db
 for p in Pokemon:
     Id, Name, Type1, Type2, Hp, Attack, Defense, speed, Sp_attack, Sp_defense ,Weight, Height, Ability, image, Dex_entry = p
 
@@ -130,17 +123,17 @@ for p in Pokemon:
           <p class="body3-fonts">{speed}</p><progress class="progress-bar" value="{speed}" max="100"
             style="color: var(--{Type1});"></progress>
         </div>
-
-    <img src="/assets/Ui/pokedex.svg" alt="pokedex" class="detail-bg">
+    </body>
     </main>
+     <img src="/assets/Ui/pokedex.svg" alt="pokedex" class="detail-bg">
+     </html>
     """
 
     with open(f"pokedex_pages/{Id}.html", "w", encoding="utf-8") as f:
-        f.write(header.format(title=Name) + content + footer)
+        f.write(header.format(title=Name) + content)
 
-# Generate index.html
+
 index_content = header.format(title="Pokédex") + """
-<body>
     <main class="main">
       <header class="header home">
         <div class="container">
@@ -230,4 +223,4 @@ index_content += index_footer
 with open("pokedex_pages/index.html", "w", encoding="utf-8") as f:
     f.write(index_content)
 
-print("✅ Pokédex website generated successfully!")
+print("Website is fully generated :)")
